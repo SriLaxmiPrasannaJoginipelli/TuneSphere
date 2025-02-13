@@ -24,6 +24,8 @@ class TrackTableViewCell: UITableViewCell {
     
     private let trackNameLabel: UILabel = {
         let label = UILabel()
+
+        //label.font = .systemFont(ofSize: 16, weight: .bold)
         label.font = UIFont.preferredFont(forTextStyle: .headline)
         label.numberOfLines = 1
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -32,6 +34,10 @@ class TrackTableViewCell: UITableViewCell {
     
     private let artistNameLabel: UILabel = {
         let label = UILabel()
+
+//        label.font = .systemFont(ofSize: 14, weight: .regular)
+//        label.textColor = .gray
+
         label.font = UIFont.preferredFont(forTextStyle: .subheadline)
         label.textColor = .secondaryLabel
         label.numberOfLines = 1
@@ -54,6 +60,8 @@ class TrackTableViewCell: UITableViewCell {
         contentView.addSubview(albumImageView)
         contentView.addSubview(trackNameLabel)
         contentView.addSubview(artistNameLabel)
+
+        //contentView.addSubview(playButton)
         
         NSLayoutConstraint.activate([
             // Album Image
@@ -69,9 +77,21 @@ class TrackTableViewCell: UITableViewCell {
             
             // Artist Name
             artistNameLabel.leadingAnchor.constraint(equalTo: albumImageView.trailingAnchor, constant: 16),
+
+            artistNameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            artistNameLabel.topAnchor.constraint(equalTo: trackNameLabel.bottomAnchor, constant: 4),
+            artistNameLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16),
+            
+            // Play Button
+//            playButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+//            playButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+//            playButton.widthAnchor.constraint(equalToConstant: 40),
+//            playButton.heightAnchor.constraint(equalToConstant: 40),
+
             artistNameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             artistNameLabel.topAnchor.constraint(equalTo: trackNameLabel.bottomAnchor, constant: 4),
             artistNameLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16)
+
         ])
     }
     
@@ -86,6 +106,25 @@ class TrackTableViewCell: UITableViewCell {
         } else {
             albumImageView.image = UIImage(named: "placeholder")
         }
+        
+        // Enable/disable play button based on preview URL availability
+//        if track.previewUrl != nil {
+//            playButton.isEnabled = true
+//            playButton.tintColor = .systemGreen
+//        } else {
+//            playButton.isEnabled = false
+//            playButton.tintColor = .gray
+//        }
+        
+        // Add action to the play button
+        //playButton.addTarget(self, action: #selector(playButtonTapped), for: .touchUpInside)
+    }
+    
+    // MARK: - Play Button Action
+    @objc private func playButtonTapped() {
+        print("Play button tapped")
+        // Trigger audio playback (you can pass this action to the view controller)
+
     }
     
     // MARK: - Prepare for Reuse

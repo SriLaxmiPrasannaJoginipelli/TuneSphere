@@ -55,7 +55,6 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         gradientLayer.colors = [UIColor.systemPurple.cgColor, UIColor.systemBlue.cgColor]
         gradientLayer.frame = view.bounds
         view.layer.insertSublayer(gradientLayer, at: 0)
-        
         //view.addSubview(logoutButton)
         view.addSubview(tableView)
         tableView.delegate = self
@@ -101,6 +100,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
 
     // MARK: - Create Table Header
+
    private func createTableHeader(with url: String?) {
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.width, height: view.width / 1.8))
         headerView.backgroundColor = .clear

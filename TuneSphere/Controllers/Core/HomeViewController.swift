@@ -246,7 +246,6 @@ extension HomeViewController: UICollectionViewDelegate,UICollectionViewDataSourc
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
             let section = sections[indexPath.section]
-            
             switch section {
             case .spotifyCategories(let viewModels):
                 let selectedCategory = viewModels[indexPath.row]
